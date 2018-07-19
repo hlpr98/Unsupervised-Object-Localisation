@@ -23,11 +23,6 @@ Pyramid Matching for Recognizing Natural Scene Categories,'' CVPR 2006.
 
 
 The main function to build the spatial pyramid is BuildPyramid.
-For further information on Buildpyramid and other functions discussed in 
-this file refer to comments in the .m files or look at Example.m.
-(The images/ directory contains a few sample images that are used by 
-Example.m to compute spatial pyramids and their histogram intersection
-matrix.)
 
 BuildPyramid first extracts SIFT descriptors on a regular grid from each 
 image. It then runs k-means to find the dictionary. Each sift descriptor 
@@ -42,34 +37,6 @@ GenerateSiftDescriptors
 CalculateDictionary
 BuildHistograms
 CompilePyramid
-
-If you wish to use one of these functions without first running the previous 
-step, you will need to provide the appropriate data files. They should be in 
-the dataBaseDir with the same relative path as the image they correspond to. 
-Their file names should be the same as the image they correspond to with the 
-appropriate suffix appended to the end. For instance if you call 
-CalculateDictionary with featureSuffix = ‘_sift.mat’ CalculateDictionary will 
-look for the data file ‘dataBaseDir/im1_sift.mat’ for the image file 
-‘imageBaseDir/im1.jpg’.
-
-There are two different types of data files (feature lists and texton indices). 
-Each must be formatted correctly to work with the functions provided.
-
-features:
-    data: NxM matrix of image features where N is the number of features in the image 
-        and M is the feature vector size
-    x: Nx1 vector of image x coordinates where N is the number of features in the image
-    y: Nx1 vector of image y coordinates where N is the number of features in the image
-    wid: width of the image
-    hgt: height of the image
-
-texton_ind: 
-    data: Nx1 vector of texton indices corresponding to the appropriate dictionary bin 
-        for each feature of the image where N is the number of features in the image
-    x: Nx1 vector of image x coordinates where N is the number of features in the image
-    y: Nx1 vector of image y coordinates where N is the number of features in the image
-    wid: width of the image
-    hgt: height of the image
 
 NOTE: This code does not include functionality for SVM classification, though it
 does include functions for computing the histogram intersection kernel matrix
